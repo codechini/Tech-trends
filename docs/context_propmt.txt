@@ -1,0 +1,21 @@
+I am building "Tech Velocity Engine" - a lightweight, zero-dependency Go monolith tracking technology keyword velocity across developer communities (Hacker News, Reddit, RSS) and displaying it via HTMX and uPlot.
+
+### Core Stack & Architecture
+- **Language:** Go 1.22+ (net/http, log/slog, robfig/cron, testing/httptest)
+- **Database:** Supabase (PostgreSQL) using pgx / sqlc for raw SQL queries
+- **Frontend:** HTMX (SSR HTML fragments) + Alpine.js + uPlot (Canvas time-series charts)
+- **Styling:** Tailwind CSS / Vanilla CSS
+- **Observability:** Prometheus (/metrics), Sentry, log/slog (JSON)
+- **Methodology:** Test-Driven Development (TDD) using standard `go test` and `httptest`
+
+### Key Constraints & Rules
+1. **Zero External Heavy Frameworks:** Stick to standard library `net/http` for routing/middleware where possible.
+2. **Idiomatic Go:** Follow standard Go layout (`cmd/app`, `internal/`). Put tests directly alongside code (`*_test.go`).
+3. **In-Memory Calculations:** Scrape and calculate Velocity in-memory before bulk-upserting snapshots to Supabase.
+4. **Velocity Formula:** `Velocity = (Current_Mentions - Previous_Mentions) / (Previous_Mentions + 1)`
+5. **Free-Tier Conscious:** Write lean, memory-efficient code suited for Docker deployment on minimal compute instances.
+
+When generating code:
+- Always write corresponding unit/integration tests (`*_test.go`) first or alongside implementation code.
+- Keep dependencies minimal; prefer Go standard library over third-party packages when reasonable.
+- Ensure all HTTP handlers return clean HTMX partials or JSON for uPlot canvas rendering.

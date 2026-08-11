@@ -1,0 +1,53 @@
+# ==========================================
+# Binary & Build Artifacts
+# ==========================================
+# Compiled Go binaries
+/bin/
+/dist/
+*.exe
+*.exe;
+*.dll
+*.so
+*.dylib
+app
+
+# Temporary build output / test binaries
+*.test
+*.out
+*.prof
+
+# ==========================================
+# Environment & Secrets
+# ==========================================
+# Local environment variables and Supabase credentials
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# ==========================================
+# Database & Tools
+# ==========================================
+# Local database dumps or sqlc generated temporary artifacts
+/migration/*.log
+/tmp/
+
+
+# Node.js dependencies (if using standalone Tailwind/NPM CLI locally)
+node_modules/
+.npm/
+
+# ==========================================
+# IDE & System Files
+# ==========================================
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Editor configurations
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

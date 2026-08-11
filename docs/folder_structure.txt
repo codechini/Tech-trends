@@ -1,0 +1,34 @@
+tech-velocity-monolith/
+├── cmd/
+│   └── app/
+│       ├── main.go               # Application entrypoint
+│       └── main_test.go          # Integration tests for app initialization & routes
+├── internal/
+│   ├── config/                   # Env variables (Supabase URL, API Keys)
+│   │   ├── config.go
+│   │   └── config_test.go        # Unit tests for env loading & validation
+│   ├── database/                 # Supabase / Postgres connection pools & queries
+│   │   ├── postgres.go
+│   │   ├── postgres_test.go      # DB integration tests (uses test container/mock)
+│   │   └── queries.sql           # sqlc generated queries
+│   ├── ingester/                 # Scraper background task
+│   │   ├── hn.go
+│   │   ├── hn_test.go            # Unit tests with HTTP mocks for external APIs
+│   │   ├── ngrams.go
+│   │   └── ngrams_test.go        # Unit tests for tokenizer & mathematical logic
+│   ├── metrics/                  # Time-series aggregation algorithms
+│   │   ├── velocity.go
+│   │   └── velocity_test.go      # Edge case tests for mathematical computations
+│   ├── testutils/                # Shared TDD test helpers, mocks, & fixtures
+│   │   ├── fixtures.go           # Mock RSS/HN payloads for offline testing
+│   │   └── mocks.go              # Interface mocks for DB & HTTP clients
+│   └── web/                      # Web Server & UI logic
+│       ├── handlers/             # HTTP handlers returning HTMX partials
+│       │   ├── handlers.go
+│       │   └── handlers_test.go  # httptest suite verifying HTMX responses & status codes
+│       ├── templates/            # HTML templates / Go templ files
+│       └── static/               # uPlot.js, HTMX.js, CSS files
+├── migrations/                   # SQL migration files
+├── Dockerfile                    # Portable build container
+├── Makefile                      # Standardized TDD task runner (test, coverage, build)
+└── go.mod
