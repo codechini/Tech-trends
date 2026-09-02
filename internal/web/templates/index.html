@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Tech Trends</title>
+  <link rel="stylesheet" href="/static/global.css">
+  <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+</head>
+
+<body>
+  <button hx-get="/fragment" hx-target="#out" hx-swap="innerHTML">Load</button>
+  <div id="out"></div>
+</body>
+
+</html>
