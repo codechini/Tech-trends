@@ -6,6 +6,12 @@
       "sourceType": "github",
       "skillPath": "skills/caveman/SKILL.md",
       "computedHash": "59e1fe0d3eeb4189ee5c467efde567672e5cacb41f157c477a6152ca907d44ea"
+    },
+    "requesting-code-review": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "skillPath": "skills/requesting-code-review/SKILL.md",
+      "computedHash": "004f340ae65811095d6a9bb0a759c87d0a8085c5e705dbb019b011626293d2e9"
     }
   }
 }

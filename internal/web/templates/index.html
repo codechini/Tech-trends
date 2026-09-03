@@ -1,5 +1,6 @@
+{{define "index.html"}}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <title>Tech Trends</title>
@@ -8,8 +9,12 @@
 </head>
 
 <body>
-  <button hx-get="/fragment" hx-target="#out" hx-swap="innerHTML">Load</button>
-  <div id="out"></div>
+  {{template "header.html" .}}
+  <main>
+    <h1>Home</h1>
+    <p>Welcome to Tech Trends.</p>
+  </main>
 </body>
 
 </html>
+{{end}}

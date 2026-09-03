@@ -1,0 +1,8 @@
+{{define "header.html"}}
+<nav>
+  <ul>
+    <li><a href="/" {{if eq .Active "home" }}class="active" {{end}}>Home</a></li>
+    <li><a href="/pastweekstats" {{if eq .Active "pastweek" }}class="active" {{end}}>Past Week Stats</a></li>
+  </ul>
+</nav>
+{{end}}
