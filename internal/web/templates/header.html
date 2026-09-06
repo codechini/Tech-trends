@@ -1,8 +1,25 @@
 {{define "header.html"}}
-<nav>
-  <ul>
-    <li><a href="/" {{if eq .Active "home" }}class="active" {{end}}>Home</a></li>
-    <li><a href="/pastweekstats" {{if eq .Active "pastweek" }}class="active" {{end}}>Past Week Stats</a></li>
-  </ul>
-</nav>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <html>
+
+  </html>
+  <nav>
+    <ul>
+      <li><a href="/" {{if eq .Active "home" }}class="active" {{end}}>Home</a></li>
+      <li><a href="/newsfeed" {{if eq .Active "newsfeed" }}class="active" {{end}}>News Feed</a></li>
+      <li><a href="/pastweekstats" {{if eq .Active "pastweek" }}class="active" {{end}}>Past Week Stats</a></li>
+    </ul>
+  </nav>
+</body>
+
+</html>
 {{end}}
