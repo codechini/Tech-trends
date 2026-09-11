@@ -13,7 +13,7 @@ type Post struct{
 }
 
 var testtemplate = template.Must(template.ParseFS(templates.FS, "*.html"))
-
+// need to migrate to the /ingester package to fetch and parse RSS feeds, and store them in a database.
 func NewsFeed(w http.ResponseWriter, r *http.Request){
 	resp,err := http.Get("https://jsonplaceholder.typicode.com/posts")
 	if err != nil {

@@ -13,6 +13,7 @@
 <body>
   {{template "header.html" .}}
   <main>
+    <!-- will eventually be converted to a news feed for today from the DB using a materialized view for today -->
     <h1>News Feed</h1>
     <ul class="posts">
       {{range .NewsItems}}

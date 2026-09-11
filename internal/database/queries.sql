@@ -1,0 +1,2 @@
+-- PUT parsed feed/ keyword data to database.
+-- GET from materialized view from database, stores in format for uPlot.
