@@ -1,1 +1,0 @@
-// process the news feed from parser.go and return the parsed feed as JSON.

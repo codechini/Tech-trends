@@ -5,6 +5,7 @@ import (
 	"net/http/httptest"
 	"testing"
 )
+
 // Not written by me nned to verify.
 func TestPage(t *testing.T) {
 	req := httptest.NewRequest("GET", "/", nil)

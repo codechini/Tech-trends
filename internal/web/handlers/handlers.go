@@ -1,40 +1,30 @@
 package handlers
-import(
+
+import (
+	"fmt"
 	"html/template"
 	"net/http"
+
+	"techtrends.com/m/internal/ingester"
 	"techtrends.com/m/internal/web/templates"
-	"fmt"
-	"encoding/json"
 )
 
-type Post struct{
-	ID int `json:"id"`
-	Title string `json:"title"`
-}
-
 var testtemplate = template.Must(template.ParseFS(templates.FS, "*.html"))
-// need to migrate to the /ingester package to fetch and parse RSS feeds, and store them in a database.
-func NewsFeed(w http.ResponseWriter, r *http.Request){
-	resp,err := http.Get("https://jsonplaceholder.typicode.com/posts")
+
+// NewsFeed delegates RSS fetching/parsing to the ingester package and renders the result.
+func NewsFeed(w http.ResponseWriter, r *http.Request) {
+	posts, err := ingester.ParseRSSFeed(r.Context(), "https://blog.pragmaticengineer.com/rss/")
 	if err != nil {
-		http.Error(w, fmt.Sprintf("Failed to fetch news feed: %v", err), http.StatusInternalServerError)
+		http.Error(w, fmt.Sprintf("Error parsing RSS feed: %v", err), http.StatusBadGateway)
 		return
 	}
-	defer resp.Body.Close()
-	
-	var posts[]Post
-	if err:= json.NewDecoder(resp.Body).Decode(&posts); err != nil{
-		http.Error(w, fmt.Sprintf("Failed to decode news feed: %v", err), http.StatusInternalServerError)
-		return
-	}
-	
 	testtemplate.ExecuteTemplate(w, "newsfeed.html", map[string]any{"Active": "newsfeed", "NewsItems": posts})
 }
 
-func Page(w http.ResponseWriter, r *http.Request){
+func Page(w http.ResponseWriter, r *http.Request) {
 	// testtemplate.ExecuteTemplate(w, "index.html", nil)
 	testtemplate.ExecuteTemplate(w, "index.html", map[string]any{"Active": "home"})
 }
-func PastWeekStats(w http.ResponseWriter, r *http.Request){
+func PastWeekStats(w http.ResponseWriter, r *http.Request) {
 	testtemplate.ExecuteTemplate(w, "pastweekstats.html", map[string]any{"Active": "pastweek"})
 }
