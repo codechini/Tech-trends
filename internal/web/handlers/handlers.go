@@ -13,7 +13,7 @@ var testtemplate = template.Must(template.ParseFS(templates.FS, "*.html"))
 
 // NewsFeed delegates RSS fetching/parsing to the ingester package and renders the result.
 func NewsFeed(w http.ResponseWriter, r *http.Request) {
-	posts, err := ingester.ParseRSSFeed(r.Context(), "https://blog.pragmaticengineer.com/rss/")
+	posts, err := ingester.ParseRSSFeed(r.Context(), "https://www.theverge.com/rss/index.xml")
 	if err != nil {
 		http.Error(w, fmt.Sprintf("Error parsing RSS feed: %v", err), http.StatusBadGateway)
 		return

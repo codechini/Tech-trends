@@ -13,6 +13,7 @@ type Post struct {
 	Title     string `json:"title"`
 	Link      string `json:"link"`
 	Published string `json:"published"`
+	Description string `json:"description"`
 	GUID      string `json:"guid"`
 }
 
@@ -42,6 +43,7 @@ func ParseRSSFeed(ctx context.Context, feedURL string) ([]Post, error) { //shoul
 			Title:     item.Title,
 			Link:      item.Link,
 			Published: item.Published,
+			Description: item.Description,
 			GUID:      item.GUID,
 		})
 	}

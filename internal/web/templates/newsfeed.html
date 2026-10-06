@@ -14,10 +14,21 @@
   {{template "header.html" .}}
   <main>
     <!-- will eventually be converted to a news feed for today from the DB using a materialized view for today -->
-    <h1>News Feed</h1>
+    <h1><u>News Feed </u></h1>
     <ul class="posts">
       {{range .NewsItems}}
-      <li>{{.ID}}. {{.Title}}</li>
+      <li>
+        <div>
+          <h2>{{.Title}}</h2>
+          <div style="margin-bottom: 1rem;">
+            <time>{{.Published}}</time>
+          </div>
+          <p>{{.Description}}</p>
+          <div style="display: flex;justify-content: end;margin-right: 20px;">
+            <a class="feed-link" href="{{.Link}}" target="_blank">Read more</a>
+          </div>
+        </div>
+      </li>
       {{end}}
     </ul>
   </main>
